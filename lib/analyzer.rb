@@ -2,6 +2,7 @@
 
 require 'lib/parser'
 
+# Analyze log file for page views
 class Analyzer
   def initialize(path)
     @path = path

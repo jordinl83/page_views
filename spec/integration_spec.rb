@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-# rubocop:disable RSpec/DescribeClass
+# rubocop:disable RSpec/DescribeClass, RSpec/MultipleExpectations
 RSpec.describe 'Integration tests' do
   it 'executes command line script' do
     expect(`./bin/analyze fixtures/example.log`)
@@ -10,9 +10,9 @@ RSpec.describe 'Integration tests' do
                    '/page2 2.2.2.2'].join("\n"))
   end
 
-  it 'prints error message and exits if there is an error', focus: true do
+  it 'prints error message and exits if there is an error' do
     expect(`./bin/analyze wrong`).to include('could not be found')
-    expect($?.exitstatus).to eq(1)
+    expect($CHILD_STATUS.exitstatus).to eq(1)
   end
 end
-# rubocop:enable RSpec/DescribeClass
+# rubocop:enable RSpec/DescribeClass, RSpec/MultipleExpectations
