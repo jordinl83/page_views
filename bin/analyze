@@ -1,4 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-puts ARGV[0]
+$LOAD_PATH.unshift(File.dirname(__dir__))
+
+require 'lib/analyzer'
+
+begin
+  puts Analyzer.new(ARGV[0]).call
+rescue RuntimeError => e
+  puts e.message
+  exit 1
+end
