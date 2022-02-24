@@ -7,8 +7,10 @@ require 'spec_helper'
 RSpec.describe 'Integration tests' do
   it 'executes command line script' do
     expect(`./bin/analyze fixtures/example.log`)
-      .to include(['/page1 1.1.1.1',
-                   '/page2 2.2.2.2'].join("\n"))
+      .to include(['/page1 3 visits',
+                   '/page2 2 visits',
+                   '/page2 2 unique views',
+                   '/page1 1 unique views'].join("\n"))
   end
 
   it 'prints error message and exits if there is an error' do
