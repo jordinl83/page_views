@@ -1,3 +1,8 @@
+## Description
+
+Given a collection of page visits generate a report containing total visits and unique views 
+for all pages.
+
 ## Installation
 
 ```shell
